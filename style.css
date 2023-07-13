@@ -1,0 +1,98 @@
+*
+{   
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.video-container
+{   
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.video-filters
+{
+    display:flex;
+    flex-direction: column;
+    padding: 10px;
+    position: absolute;
+    left: 10vh;
+    top:0;
+}
+
+.filter
+{   
+    height: 120px;
+    width: 100px;
+    background-size: cover;
+    background-image: url("/images/backgroundFilter.jpg");
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.controls
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100px;
+    position: absolute;
+    right: 30vh;
+    top: 10vh;
+    height: 500px;
+}
+.zoom
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 80px;
+}
+.zoom>div
+{   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+.record
+{   
+    height: 80px;
+    width: 80px;
+    border: 5px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+}
+
+.red
+{   
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+    background-color: red;
+}
+.white
+{   
+    height: 80%;
+    width: 80%;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.fa-solid
+{
+    color: white;
+    cursor: pointer;
+}
