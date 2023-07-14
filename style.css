@@ -7,11 +7,14 @@
 
 .video-container
 {   
-    background-color: black;
+    background-color:black;
     height: 100vh;
     width: 100vw;
 }
 
+video{
+    margin: auto;
+}
 
 .video-filters
 {
@@ -20,15 +23,16 @@
     padding: 10px;
     position: absolute;
     left: 10vh;
-    top:0;
+    top:5vh;
 }
 
 .filter
 {   
-    height: 120px;
+    height: 110px;
     width: 100px;
     background-size: cover;
     background-image: url("/images/backgroundFilter.jpg");
+    background-blend-mode:hard-light;
     cursor: pointer;
     border: 2px solid white;
 }
@@ -41,10 +45,11 @@
     justify-content: space-around;
     width: 100px;
     position: absolute;
-    right: 30vh;
+    right: 10vh;
     top: 10vh;
     height: 500px;
 }
+
 .zoom
 {
     display: flex;
@@ -54,14 +59,15 @@
     height: 80px;
     width: 80px;
 }
-.zoom>div
+
+.zoom div
 {   
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50%;
 }
-.record
+.record,.capture,.gallery
 {   
     height: 80px;
     width: 80px;
@@ -76,21 +82,49 @@
     background-color: transparent;
 }
 
-.red
+.inner-record
 {   
-    height: 80%;
-    width: 80%;
+    height: 70%;
+    width: 70%;
     border-radius: 50%;
     background-color: red;
 }
-.white
+.inner-capture
 {   
-    height: 80%;
-    width: 80%;
+    height: 70%;
+    width: 70%;
     border-radius: 50%;
-    background-color: white;
+    background-color: white;    
 }
 
+.animate-record
+{
+    animation-name: scaleInScaleOut;
+    animation-duration:0.5s;
+    animation-iteration-count: infinite;
+}
+
+.animate-capture
+{
+    animation-name: scaleInScaleOut;
+    animation-duration:0.5s;
+    animation-iteration-count:2;
+}
+
+@keyframes scaleInScaleOut
+{
+    0%{
+        transform: scale(1);
+    }
+    50%
+    {
+        transform: scale(1.1);
+    }
+    100%
+    {
+        transform: scale(1);
+    }
+}
 .fa-solid
 {
     color: white;

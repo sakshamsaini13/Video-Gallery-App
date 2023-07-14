@@ -6,28 +6,28 @@
     <title>Video App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="app.js" defer>
 </head>
 <body>
     <div class="video-container">
         <video autoplay></video>
         <div class="video-filters">
-            <div class="filter"></div>
-            <div class="filter"></div>
-            <div class="filter"></div>
-            <div class="filter"></div>
-            <div class="filter"></div>
-            <div class="filter"></div>
+            <div class="filter" style="background-color: rgba(255,255,0,0.2);"></div>
+            <div class="filter"  style="background-color: rgba(102,0,255,0.2);"></div>
+            <div class="filter"  style="background-color: rgba(0,255,153,0.2);"></div>
+            <div class="filter"  style="background-color: rgba(0,153,255,0.2);"></div>
+            <div class="filter" style="background-color: rgba(255,0,0,0.2);"></div>
+            <div class="filter"  style="background-color: rgba(43,225,0,0.2);"></div>
         </div>
         <div class="controls">
             <div class="zoom">
                 <div class="zoomIn"><i class="fa-solid fa-plus fa-2xl"></i></div>
                 <div class="zoomOut"><i class="fa-solid fa-minus fa-2xl"></i></div>
             </div>
-            <div class="record"><div class="red"></div></div>
-            <div class="record"><div class="white"></div></div>
-            <div class="record">Gallery</div>
+            <div class="record"><div class="inner-record "></div></div>
+            <div class="capture"><div class="inner-capture "></div></div>
+            <div class="gallery">Gallery</div>
         </div>
     </div>
+    <script src="app.js"></script>
 </body>
 </html>
