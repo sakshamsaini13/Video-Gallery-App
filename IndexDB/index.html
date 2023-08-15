@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        Db Name :
+    <input type="text" id="dbname">
+    </div>
+
+    <div>
+        Db Version :
+        <input type="text" id="dbversion"/>
+    </div>
+    <br>
+
+   <button id ="addDb">Add Database</button>
+
+   <div>
+    Media ID:
+    <input type="text" id="mid" />
+   </div>
+
+   <div>
+     MediaType :
+     <input type="text" id="mediaType" />
+   </div>
+
+   <button id="addMedia">add Media</button>
+   <div>
+    Show Media:
+    <button id="showMedia">Show Media</button>
+   </div>
+</body>
+<script>
+    let dbName = document.getElementById("dbname");
+    let dbVersion = document.getElementById("dbversion");
+    let addDb=document.getElementById("addDb");
+
+    let mid=document.getElementById("mid");
+    let MediaType=document.getElementById("mediaType");
+    let addMediaButton= document.getElementById("addMedia");
+    let showMediaButton=document.getElementById("showMedia");
+    let db;
+
+addDb.addEventListener("click",addTheDb);
+addMediaButton.addEventListener("click",addMedia);
+showMediaButton.addEventListener("click",showMedia);
+
+function showMedia()
+{     
+    let txnObject=db.transaction("Media","readonly");
+    let mediaTable=txnObject.objectStore("Media");
+    let cursorObject=mediaTable.openCursor();
+
+    cursorObject.onsuccess()=function(e)
+    {
+        let cursor=cursorObject.result;
+        if(cursor)
+        {   
+            console.log(cursor.value);
+            cursor.continue();            
+        }
+    }
+ 
+
+    txnObject.oncomplete=()=>
+    {
+        console.log("Transaction Successfull");
+    }
+
+    txnObject.onerror=(e)=>
+    {
+        console.log(e.target.error.message);
+    }
+
+}
+
+function addMedia()
+{   
+    let txnObject=db.transaction("Media","readwrite");
+    txnObject.oncomplete=()=>
+    {
+        console.log("wrapperReceived");
+    }
+    txnObject.onerror=(event)=>
+    {
+        alert("no such db exist "+event.target.error.message);
+        return;
+    }
+    let mediaTable=txnObject.objectStore("Media");
+    mediaTable.add({
+        mid :mid.value,
+        type:MediaType.value,
+    });
+    
+}
+
+function addTheDb()
+{
+    let dbOpenRequest = indexedDB.open(dbName.value, dbVersion.value);  
+    dbOpenRequest.onupgradeneeded=(e)=>
+    {
+         console.log("insideOnUpgrade");
+         db=e.target.result;
+         let makeStore=db.createObjectStore("Media",
+         { 
+            keyPath :"mid",
+            autoIncrement:true,
+         }
+         );
+    }
+
+    dbOpenRequest.onsuccess=(e)=>
+    { 
+        console.log("insideOnSuccess");
+        db=e.target.result;
+    }
+}
+</script>
+</html>
